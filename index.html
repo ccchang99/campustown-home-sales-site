@@ -101,6 +101,9 @@
       Sales under <strong>$10,000</strong> are excluded because the data description identifies
       them as impossible prices.
     </p>
+    <p class="note">
+      Cities are sorted by ascending median sale price.
+    </p>
 
     <p id="status" class="status">Loading sale data...</p>
     <div class="table-wrap">
@@ -202,7 +205,7 @@
             median: median(prices)
           };
         })
-        .sort((a, b) => a.city.localeCompare(b.city));
+        .sort((a, b) => a.median - b.median || a.city.localeCompare(b.city));
 
       const table = document.querySelector("#results");
       const body = table.querySelector("tbody");
